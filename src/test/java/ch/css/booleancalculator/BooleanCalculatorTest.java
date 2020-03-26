@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BooleanCalculatorTest {
 
     @Test
-    public void dada() {
+    public void evaluateBooleanForT() {
         // given
         String given = "T";
         boolean expected = false;
