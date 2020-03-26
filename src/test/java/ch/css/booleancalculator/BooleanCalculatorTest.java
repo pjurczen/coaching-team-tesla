@@ -17,6 +17,17 @@ public class BooleanCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
+    public void evaluateBooleanForTR() {
+        // given
+        String given = "TR";
+        boolean expected = false;
+        // when
+        boolean actual = new BooleanCalculator().evaluate(given);
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
+
 }
 
 /**
