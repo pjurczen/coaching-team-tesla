@@ -28,6 +28,17 @@ public class BooleanCalculatorTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
+    public void evaluateBooleanForTRU() {
+        // given
+        String given = "TRU";
+        boolean expected = false;
+        // when
+        boolean actual = new BooleanCalculator().evaluate(given);
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
+
 }
 
 /**
