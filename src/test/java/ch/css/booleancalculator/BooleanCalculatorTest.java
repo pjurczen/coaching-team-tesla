@@ -1,42 +1,26 @@
 package ch.css.booleancalculator;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BooleanCalculatorTest {
 
-    @Test
-    public void evaluateBooleanForT() {
-        // given
-        String given = "T";
-        boolean expected = false;
-        // when
-        boolean actual = new BooleanCalculator().evaluate(given);
-        // then
-        assertThat(actual).isEqualTo(expected);
-    }
 
-    @Test
-    public void evaluateBooleanForTR() {
-        // given
-        String given = "TR";
-        boolean expected = false;
-        // when
-        boolean actual = new BooleanCalculator().evaluate(given);
-        // then
-        assertThat(actual).isEqualTo(expected);
-    }
 
-    @Test
-    public void evaluateBooleanForTRU() {
+    @ParameterizedTest
+    @CsvSource({
+            "T, false",
+            "TR, false",
+            "TRU, false",
+    })
+    public void evaluateBooleanFromString(String givenString, boolean expectedBoolean) {
         // given
-        String given = "TRU";
-        boolean expected = false;
         // when
-        boolean actual = new BooleanCalculator().evaluate(given);
+        boolean actual = new BooleanCalculator().evaluate(givenString);
         // then
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual).isEqualTo(expectedBoolean);
     }
 
 }
