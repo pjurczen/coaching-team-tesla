@@ -12,6 +12,7 @@ public class BooleanCalculatorTest {
             "T, false",
             "TR, false",
             "TRU, false",
+            "TRUE, true",
     })
     public void evaluateBooleanFromString(String givenString, boolean expectedBoolean) {
         // given
