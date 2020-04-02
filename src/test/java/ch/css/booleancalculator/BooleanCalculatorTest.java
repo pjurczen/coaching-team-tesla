@@ -50,7 +50,7 @@ public class BooleanCalculatorTest {
         "TRUE OR FALSE, true",
         "TRUE OR TRUE, true",
         // Kombis
-        // "TRUE OR TRUE OR TRUE AND FALSE, true",
+        "TRUE OR TRUE OR TRUE AND FALSE, true",
         // "FALSE OR FALSE OR TRUE AND FALSE, true",
         
     })

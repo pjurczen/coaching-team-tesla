@@ -28,9 +28,12 @@ public class BooleanCalculator {
     private Element erzeugeBaum(List<String> elements) {
         Element elementeBaum = null;
         if (elements.contains(OR)) {
-            Element leftHandSide = toElement(elements.get(0));
-            Element rightHandSide = toElement(elements.get(2));
-            elementeBaum = new Element.OR(leftHandSide, rightHandSide);
+            int indexOf = elements.indexOf(OR);
+            
+            Element leftElement = erzeugeBaum(elements.subList(0, indexOf));
+            Element rightElement = erzeugeBaum(elements.subList(indexOf + 1, elements.size()));
+
+            elementeBaum = new Element.OR(leftElement, rightElement);
         } else
         if (elements.contains(AND)) {
             Element leftHandSide = toElement(elements.get(0));
