@@ -16,9 +16,11 @@ public class BooleanCalculator {
        
         List<String> elements = split(given);
         if (given.contains(OR)) {
-            String leftHandSide = elements.get(0);
-            String rightHandSide = elements.get(2);
-            result = evaluate(leftHandSide) || evaluate(rightHandSide); 
+            Element leftHandSide = toElement(elements.get(0));
+            Element rightHandSide = toElement(elements.get(2));
+            new Element.OR(leftHandSide, rightHandSide);
+            
+            result = evaluate(elements.get(0)) || evaluate(elements.get(2)); 
         }
         if (given.contains(AND)) {
             String leftHandSide = elements.get(0);
