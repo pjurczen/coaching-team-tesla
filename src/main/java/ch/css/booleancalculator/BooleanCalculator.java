@@ -13,19 +13,24 @@ public class BooleanCalculator {
         boolean result = false;
        
         String[] elements = split(given);
-        
         if (given.contains(OR)) {
-            result = evaluate(elements[0]) || evaluate(elements[2]); 
+            String leftHandSide = elements[0];
+            String rightHandSide = elements[2];
+            result = evaluate(leftHandSide) || evaluate(rightHandSide); 
         }
         if (given.contains(AND)) {
-            result = evaluate(elements[0]) && evaluate(elements[2]); 
+            String leftHandSide = elements[0];
+            String rightHandSide = elements[2];
+            result = evaluate(leftHandSide) && evaluate(rightHandSide); 
         }
         if ((elements[0]).equals(NOT)){
-            result = ! evaluate(elements[1]);
+            String rightHandSide = elements[1];
+            result = ! evaluate(rightHandSide);
         }
         if (TRUE.equals(given)) {
             result = true;
         }
+        
         return result;
     }
 
