@@ -2,6 +2,9 @@ package ch.css.booleancalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -15,16 +18,22 @@ public class BooleanCalculatorTest {
         "TRU, false",
         "TRUE, true",
         "FALSE, false",
+        // NOT
         "NOT FALSE, true",
         "NOT TRUE, false",
+        // AND
         "FALSE AND FALSE, false",
         "FALSE AND TRUE, false",
         "TRUE AND FALSE, false",
         "TRUE AND TRUE, true",
+        // OR
         "FALSE OR FALSE, false",
         "FALSE OR TRUE, true",
         "TRUE OR FALSE, true",
         "TRUE OR TRUE, true",
+        // Kombis
+        // "TRUE OR TRUE OR TRUE AND FALSE, true",
+        // "FALSE OR FALSE OR TRUE AND FALSE, true",
         
     })
     public void evaluateBooleanFromString(String givenString, boolean expectedBoolean) {
@@ -39,9 +48,9 @@ public class BooleanCalculatorTest {
     public void shouldSplitFalse() {
         //arrange
         String given = "FALSE";
-        String[] expectedElements = { "FALSE" };
+        List<String> expectedElements = Arrays.asList("FALSE");
         //act
-        String[] actual = new BooleanCalculator().split(given);
+        List<String> actual = new BooleanCalculator().split(given);
         // assert
         assertThat(actual).isEqualTo(expectedElements);
     }
@@ -50,9 +59,9 @@ public class BooleanCalculatorTest {
     public void shouldSplitNotFalse() {
         // arrange
         String given = "NOT FALSE";
-        String[] expectedElements = { "NOT", "FALSE" };
+        List<String> expectedElements = Arrays.asList("NOT", "FALSE");
         // act
-        String[] actual = new BooleanCalculator().split(given);
+        List<String> actual = new BooleanCalculator().split(given);
         // assert
         assertThat(actual).isEqualTo(expectedElements);
     }
