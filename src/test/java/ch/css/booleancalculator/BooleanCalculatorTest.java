@@ -13,6 +13,7 @@ public class BooleanCalculatorTest {
             "TR, false",
             "TRU, false",
             "TRUE, true",
+            "FALSE, false",
     })
     public void evaluateBooleanFromString(String givenString, boolean expectedBoolean) {
         // given
@@ -21,7 +22,6 @@ public class BooleanCalculatorTest {
         // then
         assertThat(actual).isEqualTo(expectedBoolean);
     }
-
 }
 
 /**
