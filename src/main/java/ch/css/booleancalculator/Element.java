@@ -5,6 +5,8 @@ interface Element {
 
 
 
+
+
     boolean asBoolean();
     
 
@@ -24,6 +26,22 @@ interface Element {
         }
 
     }
+    
+    public class NOT implements Element {
+
+        private Element element;
+
+        public NOT(Element element) {
+            this.element = element;
+        }
+
+        @Override
+        public boolean asBoolean() {
+            return ! this.element.asBoolean();
+        }
+
+    }
+    
     
     public class OR implements Element {
         

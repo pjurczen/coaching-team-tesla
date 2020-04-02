@@ -77,6 +77,16 @@ public class BooleanCalculatorTest {
         // assert
         assertThat(actual.getClass()).isEqualTo(Element.True.class);
     }
+    
+    @Test
+    public void createFalseElement() {
+        // arrange
+        String given = "FALSE";
+        // act
+        Element actual = new BooleanCalculator().toElement(given);
+        // assert
+        assertThat(actual.getClass()).isEqualTo(Element.False.class);
+    }
 }
 
 /**

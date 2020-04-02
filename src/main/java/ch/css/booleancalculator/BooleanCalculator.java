@@ -3,9 +3,12 @@ package ch.css.booleancalculator;
 import java.util.Arrays;
 import java.util.List;
 
+import ch.css.booleancalculator.Element.False;
+
 public class BooleanCalculator {
     
     private static final String TRUE = "TRUE";
+    private static final String FALSE = "FALSE";
     private static final String NOT = "NOT";
     private static final String AND = "AND";
     private static final String OR = "OR";
@@ -13,16 +16,17 @@ public class BooleanCalculator {
 
     public boolean evaluate(String given) {
         boolean result = false;
+        Element elementeBaum = null;
        
         List<String> elements = split(given);
-        if (given.contains(OR)) {
+        if (elements.contains(OR)) {
             Element leftHandSide = toElement(elements.get(0));
             Element rightHandSide = toElement(elements.get(2));
-            new Element.OR(leftHandSide, rightHandSide);
+            elementeBaum = new Element.OR(leftHandSide, rightHandSide);
             
-            result = evaluate(elements.get(0)) || evaluate(elements.get(2)); 
+            return elementeBaum.asBoolean();
         }
-        if (given.contains(AND)) {
+        if (elements.contains(AND)) {
             String leftHandSide = elements.get(0);
             String rightHandSide = elements.get(2);
             result = evaluate(leftHandSide) && evaluate(rightHandSide); 
@@ -31,8 +35,17 @@ public class BooleanCalculator {
             String rightHandSide = elements.get(1);
             result = ! evaluate(rightHandSide);
         }
+        
         if (TRUE.equals(given)) {
-            result = true;
+            elementeBaum = toElement(given);
+            
+            return elementeBaum.asBoolean();
+        }
+        
+        if (FALSE.equals(given)) {
+            elementeBaum = toElement(given);
+            
+            return elementeBaum.asBoolean(); 
         }
         
         return result;
@@ -43,6 +56,9 @@ public class BooleanCalculator {
     }
 
     public Element toElement(String given) {
+        if (FALSE.equals(given)) {
+            return new Element.False();
+        }
         return new Element.True();
     }
     
