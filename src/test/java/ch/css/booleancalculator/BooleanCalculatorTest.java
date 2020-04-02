@@ -51,7 +51,8 @@ public class BooleanCalculatorTest {
         "TRUE OR TRUE, true",
         // Kombis
         "TRUE OR TRUE OR TRUE AND FALSE, true",
-        // "FALSE OR FALSE OR TRUE AND FALSE, true",
+        "TRUE OR FALSE AND NOT FALSE, true",
+        "TRUE AND NOT NOT TRUE OR FALSE, true",
         
     })
     public void evaluateBooleanFromString(String givenString, boolean expectedBoolean) {

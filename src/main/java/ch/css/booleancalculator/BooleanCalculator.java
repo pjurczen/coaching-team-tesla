@@ -34,14 +34,20 @@ public class BooleanCalculator {
             Element rightElement = erzeugeBaum(elements.subList(indexOf + 1, elements.size()));
 
             elementeBaum = new Element.OR(leftElement, rightElement);
-        } else
-        if (elements.contains(AND)) {
-            Element leftHandSide = toElement(elements.get(0));
-            Element rightHandSide = toElement(elements.get(2));
-            elementeBaum = new Element.AND(leftHandSide, rightHandSide);
-        } else 
-        if ((elements.get(0)).equals(NOT)){
-            elementeBaum = new Element.NOT(toElement(elements.get(1)));
+        } else if (elements.contains(AND)) {
+            int indexOf = elements.indexOf(AND);
+            
+            Element leftElement = erzeugeBaum(elements.subList(0, indexOf));
+            Element rightElement = erzeugeBaum(elements.subList(indexOf + 1, elements.size()));
+
+            elementeBaum = new Element.AND(leftElement, rightElement);
+        } else         
+        if (elements.contains(NOT)){
+            int indexOf = elements.indexOf(NOT);
+
+            Element rightElement = erzeugeBaum(elements.subList(indexOf + 1, elements.size()));
+
+            elementeBaum = new Element.NOT(rightElement);
         } else 
         
         if (TRUE.equals(elements.get(0))) {
