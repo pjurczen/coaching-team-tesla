@@ -26,14 +26,18 @@ interface Element {
     }
     
     public class OR implements Element {
+        
+        private Element leftHandSide;
+        private Element rightHandSide;
+
         public OR(Element leftHandSide, Element rightHandSide) {
-            // TODO Auto-generated constructor stub
+            this.leftHandSide = leftHandSide;
+            this.rightHandSide = rightHandSide;
         }
 
         @Override
         public boolean asBoolean() {
-           
-            return false;
+            return this.leftHandSide.asBoolean() || this.rightHandSide.asBoolean();
         }
 
     }

@@ -21,5 +21,23 @@ public class ElementTest {
         // assert
         assertThat(actual).isEqualTo(false);
     }
+    
+    @Test
+    public void falseORfalseElementShouldDeliverFalse() {
+        // act
+        boolean actual = new Element.OR(new Element.False(), new Element.False()).asBoolean();
+        // assert
+        assertThat(actual).isEqualTo(false);
+    }
+    
+    @Test
+    public void trueORtrueElementsShouldDeliverTrue() {
+        // act
+        boolean actual = new Element.OR(new Element.True(), new Element.True()).asBoolean();
+        // assert
+        assertThat(actual).isEqualTo(true);
+    }
+    
+    
 
 }
