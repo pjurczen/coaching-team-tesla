@@ -15,32 +15,39 @@ public class BooleanCalculator {
     private static final String S = " ";
 
     public boolean evaluate(String given) {
-        Element elementeBaum = null;
+
        
         List<String> elements = split(given);
+        
+        Element elementeBaum = erzeugeBaum(elements);
+        
+        return elementeBaum.asBoolean();
+    }
+
+    private Element erzeugeBaum(List<String> elements) {
+        Element elementeBaum = null;
         if (elements.contains(OR)) {
             Element leftHandSide = toElement(elements.get(0));
             Element rightHandSide = toElement(elements.get(2));
             elementeBaum = new Element.OR(leftHandSide, rightHandSide);
-        }
+        } else
         if (elements.contains(AND)) {
             Element leftHandSide = toElement(elements.get(0));
             Element rightHandSide = toElement(elements.get(2));
             elementeBaum = new Element.AND(leftHandSide, rightHandSide);
-        }
+        } else 
         if ((elements.get(0)).equals(NOT)){
             elementeBaum = new Element.NOT(toElement(elements.get(1)));
-        }
+        } else 
         
-        if (TRUE.equals(given)) {
-            elementeBaum = toElement(given);
-        }
+        if (TRUE.equals(elements.get(0))) {
+            elementeBaum = toElement(elements.get(0));
+        } else 
         
-        if (FALSE.equals(given)) {
-            elementeBaum = toElement(given);
+        if (FALSE.equals(elements.get(0))) {
+            elementeBaum = toElement(elements.get(0));
         }
-        
-        return elementeBaum.asBoolean();
+        return elementeBaum;
     }
 
     List<String> split(String given) {
