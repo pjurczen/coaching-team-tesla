@@ -15,7 +15,6 @@ public class BooleanCalculator {
     private static final String S = " ";
 
     public boolean evaluate(String given) {
-        boolean result = false;
         Element elementeBaum = null;
        
         List<String> elements = split(given);
@@ -23,32 +22,25 @@ public class BooleanCalculator {
             Element leftHandSide = toElement(elements.get(0));
             Element rightHandSide = toElement(elements.get(2));
             elementeBaum = new Element.OR(leftHandSide, rightHandSide);
-            
-            return elementeBaum.asBoolean();
         }
         if (elements.contains(AND)) {
-            String leftHandSide = elements.get(0);
-            String rightHandSide = elements.get(2);
-            result = evaluate(leftHandSide) && evaluate(rightHandSide); 
+            Element leftHandSide = toElement(elements.get(0));
+            Element rightHandSide = toElement(elements.get(2));
+            elementeBaum = new Element.AND(leftHandSide, rightHandSide);
         }
         if ((elements.get(0)).equals(NOT)){
-            String rightHandSide = elements.get(1);
-            result = ! evaluate(rightHandSide);
+            elementeBaum = new Element.NOT(toElement(elements.get(1)));
         }
         
         if (TRUE.equals(given)) {
             elementeBaum = toElement(given);
-            
-            return elementeBaum.asBoolean();
         }
         
         if (FALSE.equals(given)) {
             elementeBaum = toElement(given);
-            
-            return elementeBaum.asBoolean(); 
         }
         
-        return result;
+        return elementeBaum.asBoolean();
     }
 
     List<String> split(String given) {

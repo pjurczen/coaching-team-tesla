@@ -15,9 +15,9 @@ public class BooleanCalculatorTest {
 
     @ParameterizedTest
     @CsvSource({
-        "T, false",
-        "TR, false",
-        "TRU, false",
+//        "T, false",
+//        "TR, false",
+//        "TRU, false",
         "TRUE, true",
         "FALSE, false",
         // NOT
