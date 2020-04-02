@@ -42,7 +42,18 @@ public class BooleanCalculator {
     List<String> split(String given) {
         return Arrays.asList(given.split(S));
     }
+    
+    interface Element {
+        boolean asBoolean();
+    }
+
+    public Element toElement(String given) {
+        return new TrueElement();
+    }
+    
+    
 }
+
 
 /* **** TPP ******
  ({} → nil) no code at all → code that employs nil

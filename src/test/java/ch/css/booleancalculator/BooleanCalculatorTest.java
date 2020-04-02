@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import ch.css.booleancalculator.BooleanCalculator.Element;
+
 public class BooleanCalculatorTest {
 
     @ParameterizedTest
@@ -65,6 +67,17 @@ public class BooleanCalculatorTest {
         // assert
         assertThat(actual).isEqualTo(expectedElements);
     }
+    
+    @Test
+    public void createTrueElement() {
+        // arrange
+        String given = "TRUE";
+        // act
+        Element actual = new BooleanCalculator().toElement(given);
+        // assert
+        assertThat(actual.getClass()).isEqualTo(TrueElement.class);
+    }
+
 }
 
 /**
