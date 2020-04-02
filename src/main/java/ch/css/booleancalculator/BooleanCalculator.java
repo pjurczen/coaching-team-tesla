@@ -6,6 +6,7 @@ public class BooleanCalculator {
     private static final String FALSE = "FALSE";
     private static final String NOT = "NOT";
     private static final String AND = "AND";
+    private static final String OR = "OR";
     private static final String S = " ";
 
     public boolean evaluate(String given) {
@@ -13,6 +14,9 @@ public class BooleanCalculator {
        
         String[] elements = split(given);
         
+        if (given.contains(OR)) {
+            result = evaluate(elements[0]) || evaluate(elements[2]); 
+        }
         if (given.contains(AND)) {
             result = evaluate(elements[0]) && evaluate(elements[2]); 
         }
