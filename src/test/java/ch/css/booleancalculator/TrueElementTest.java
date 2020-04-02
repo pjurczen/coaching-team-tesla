@@ -11,7 +11,7 @@ public class TrueElementTest {
         // arrange
         
         // act
-        boolean actual = new TrueElement().asBoolean();
+        boolean actual = new Element.True().asBoolean();
         // assert
         assertThat(actual).isEqualTo(true);
     }

@@ -4,11 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BooleanCalculator {
-
-    
     
     private static final String TRUE = "TRUE";
-    private static final String FALSE = "FALSE";
     private static final String NOT = "NOT";
     private static final String AND = "AND";
     private static final String OR = "OR";
@@ -42,13 +39,9 @@ public class BooleanCalculator {
     List<String> split(String given) {
         return Arrays.asList(given.split(S));
     }
-    
-    interface Element {
-        boolean asBoolean();
-    }
 
     public Element toElement(String given) {
-        return new TrueElement();
+        return new Element.True();
     }
     
     

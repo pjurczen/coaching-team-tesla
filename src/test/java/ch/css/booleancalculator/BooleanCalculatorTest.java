@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import ch.css.booleancalculator.BooleanCalculator.Element;
+
 
 public class BooleanCalculatorTest {
 
@@ -75,9 +75,8 @@ public class BooleanCalculatorTest {
         // act
         Element actual = new BooleanCalculator().toElement(given);
         // assert
-        assertThat(actual.getClass()).isEqualTo(TrueElement.class);
+        assertThat(actual.getClass()).isEqualTo(Element.True.class);
     }
-
 }
 
 /**

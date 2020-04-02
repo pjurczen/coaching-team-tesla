@@ -1,12 +1,17 @@
 package ch.css.booleancalculator;
 
-import ch.css.booleancalculator.BooleanCalculator.Element;
 
-public class TrueElement implements Element {
+interface Element {
+    boolean asBoolean();
+    
 
-    @Override
-    public boolean asBoolean() {
-        return true;
+    class True implements Element {
+        @Override
+        public boolean asBoolean() {
+            return true;
+        }
+
     }
-
 }
+
+
