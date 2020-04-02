@@ -1,7 +1,9 @@
 package ch.css.booleancalculator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,12 +14,24 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 
 public class BooleanCalculatorTest {
+    
+    @ParameterizedTest
+    @CsvSource({
+        "T",
+        "TR",
+        "TRU",
+        
+    })
+    void excIfNotKnowsElement(final String text) {
+        IllegalArgumentException exc = assertThrows(IllegalArgumentException.class, () ->  {
+            new BooleanCalculator().evaluate(text);
+        });
+        
+        assertThat(exc.getMessage()).contains("Can not read: " + text);        
+    }
 
     @ParameterizedTest
     @CsvSource({
-//        "T, false",
-//        "TR, false",
-//        "TRU, false",
         "TRUE, true",
         "FALSE, false",
         // NOT

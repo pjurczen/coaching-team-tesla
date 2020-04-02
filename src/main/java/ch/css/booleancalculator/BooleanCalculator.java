@@ -1,5 +1,6 @@
 package ch.css.booleancalculator;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,6 +47,8 @@ public class BooleanCalculator {
         
         if (FALSE.equals(elements.get(0))) {
             elementeBaum = toElement(elements.get(0));
+        } else {
+            elementeBaum = toElement(elements.get(0));
         }
         return elementeBaum;
     }
@@ -57,8 +60,11 @@ public class BooleanCalculator {
     public Element toElement(String given) {
         if (FALSE.equals(given)) {
             return new Element.False();
-        }
-        return new Element.True();
+        } else if (TRUE.equals(given)) {
+            return new Element.True();
+        };
+        
+        throw new IllegalArgumentException("Can not read: " + given);
     }
     
     
