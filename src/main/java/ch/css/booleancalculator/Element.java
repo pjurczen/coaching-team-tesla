@@ -3,10 +3,6 @@ package ch.css.booleancalculator;
 
 interface Element {
 
-
-
-
-
     boolean asBoolean();
     
 
@@ -56,6 +52,23 @@ interface Element {
         @Override
         public boolean asBoolean() {
             return this.leftHandSide.asBoolean() || this.rightHandSide.asBoolean();
+        }
+
+    }
+    
+    public class AND implements Element {
+        
+        private Element leftHandSide;
+        private Element rightHandSide;
+
+        public AND(Element leftHandSide, Element rightHandSide) {
+            this.leftHandSide = leftHandSide;
+            this.rightHandSide = rightHandSide;
+        }
+
+        @Override
+        public boolean asBoolean() {
+            return this.leftHandSide.asBoolean() && this.rightHandSide.asBoolean();
         }
 
     }

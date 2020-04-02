@@ -46,6 +46,24 @@ public class ElementTest {
                 );
     }
     
+    @ParameterizedTest
+    @MethodSource("andData")
+    public void and(Element left, Element right, boolean expectedResult) {
+        // act
+        boolean actual = new Element.AND(left, right).asBoolean();
+        // assert
+        assertThat(actual).isEqualTo(expectedResult);
+    }
+    
+    static Stream<Arguments> andData(){
+        return Stream.of(
+                    Arguments.arguments(new Element.False(), new Element.False(), false),
+                    Arguments.arguments(new Element.True(), new Element.False(), false),
+                    Arguments.arguments(new Element.False(), new Element.True(), false),
+                    Arguments.arguments(new Element.True(), new Element.True(), true)
+                );
+    }    
+    
     @Test
     public void notFAlseIsTrue() {
         boolean actual = new Element.NOT(new Element.False()).asBoolean();
