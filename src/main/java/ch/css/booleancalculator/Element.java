@@ -4,6 +4,7 @@ package ch.css.booleancalculator;
 interface Element {
 
 
+
     boolean asBoolean();
     
 
@@ -11,6 +12,15 @@ interface Element {
         @Override
         public boolean asBoolean() {
             return true;
+        }
+
+    }
+    
+    public class False implements Element {
+
+        @Override
+        public boolean asBoolean() {
+            return false;
         }
 
     }
