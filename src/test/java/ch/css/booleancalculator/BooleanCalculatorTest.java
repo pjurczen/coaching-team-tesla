@@ -16,6 +16,10 @@ public class BooleanCalculatorTest {
             "FALSE, false",
             "NOT FALSE, true",
             "NOT TRUE, false",
+            "FALSE AND FALSE, false",
+            "FALSE AND TRUE, false",
+            "TRUE AND FALSE, false",
+            "TRUE AND TRUE, true",
     })
     public void evaluateBooleanFromString(String givenString, boolean expectedBoolean) {
         // given
