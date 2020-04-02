@@ -17,17 +17,19 @@ public class BooleanCalculatorTest {
     
     @ParameterizedTest
     @CsvSource({
-        "T",
-        "TR",
-        "TRU",
+        "T, T",
+        "TR, TR",
+        "TRU, TRU",
+        "T AND FALSE, T",
+        "TRUE AND F, F",
         
     })
-    void excIfNotKnowsElement(final String text) {
+    void excIfNotKnowsElement(final String text, final String fehlerFragment) {
         IllegalArgumentException exc = assertThrows(IllegalArgumentException.class, () ->  {
             new BooleanCalculator().evaluate(text);
         });
         
-        assertThat(exc.getMessage()).contains("Can not read: " + text);        
+        assertThat(exc.getMessage()).contains("Can not read: " + fehlerFragment);        
     }
 
     @ParameterizedTest
