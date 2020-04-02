@@ -53,6 +53,8 @@ public class BooleanCalculatorTest {
         "TRUE OR TRUE OR TRUE AND FALSE, true",
         "TRUE OR FALSE AND NOT FALSE, true",
         "TRUE AND NOT NOT TRUE OR FALSE, true",
+        // Klammer
+        // TODO "( TRUE AND NOT NOT TRUE OR FALSE ), true",
         
     })
     public void evaluateBooleanFromString(String givenString, boolean expectedBoolean) {
